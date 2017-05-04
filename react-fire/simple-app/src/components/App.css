@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Open Sans','Roboto', sans-serif;
 }
 
 .App-logo {
@@ -13,6 +14,12 @@
   color: gray;
   height: 80px;
   padding: 5px;
+  margin: 10px;
+}
+
+.App-avatar{
+  height: 75px;
+  width: 75px;
   margin: 10px;
 }
 

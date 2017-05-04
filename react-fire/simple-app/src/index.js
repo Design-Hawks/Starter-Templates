@@ -18,7 +18,20 @@ var config = {
   };
 firebase.initializeApp(config);
 
+/*
+ * Add Material UI dependencies
+ */
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+const MaterialApp = () => (
+  <MuiThemeProvider>
+    <App />
+  </MuiThemeProvider>
+);
+
 ReactDOM.render(
-  <App />,
+  <MaterialApp />,
   document.getElementById('root')
 );
