@@ -1,11 +1,58 @@
 import React, { Component } from 'react';
 import logo from '../assets/hawks.png';
+import profile from '../assets/profile.png';
 import './App.css';
 import * as firebase from 'firebase';
 
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import Avatar from 'material-ui/Avatar';
+
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+import ActionLockOpen from 'material-ui/svg-icons/action/lock-open';
+import ActionLockOutline from 'material-ui/svg-icons/action/lock-outline';
+
+class Locks extends Component {
+
+  render(){
+
+    const styles={
+      subheader: {fontSize:"1.2em", textAlign:"left"},
+      list : {margin:"10px", marginTop:"20px", padding:"10px", border:"1px darkgray dotted", backgroundColor:"lightgray"},
+      items: {backgroundColor:"#4374E0", margin:"5px", textAlign:"left", color:"white"}
+
+    };
+
+
+    return (
+      <List style={styles.list}>
+        <Subheader style={styles.subheader}> Manage Access to Lock 12345</Subheader>
+        <ListItem style={styles.items}
+          primaryText="User A"
+          leftAvatar={<Avatar src={profile} />}
+          rightIcon={<ActionLockOpen color="yellow"/>}
+        />
+        <ListItem style={styles.items}
+          primaryText="User B"
+          leftAvatar={<Avatar src={profile} />}
+          rightIcon={<ActionLockOpen color="yellow" />}
+        />
+        <ListItem style={styles.items}
+          primaryText="User C"
+          leftAvatar={<Avatar src={profile} />}
+          rightIcon={<ActionLockOutline  color="black" />}
+        />
+      </List>
+    );
+  }
+}
+
+
+
+
+
 
 
 
@@ -54,8 +101,9 @@ class App extends Component {
       logout: {backgroundColor: "red", color:"white"},
 
       profile: {
-        backgroundColor:"lightgray",
-        border:"2px solid gray",
+        backgroundColor:"#FF9700",
+        color:"#A90082",
+        border:"2px solid #A90082",
         height:"120px",
         margin:"10px"
       },
@@ -91,7 +139,6 @@ class App extends Component {
         />
 
         <div className="App-Body">
-
           <div style={styles.profile}>
             <div style={styles.avatar}>
             </div>
@@ -109,9 +156,9 @@ class App extends Component {
                 }
             </div>
           </div>
-
-
         </div>
+
+        {this.state.isLoggedIn ? <Locks/> : <span></span>}
 
       </div>
     );
